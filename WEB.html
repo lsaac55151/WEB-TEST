@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TB 유튜브 채널 포트폴리오</title>
+    <style>
+        :root {
+            --bg-color: #0b0c10;
+            --container-bg: #1f2833;
+            --accent-color: #c5a059;
+            --text-color: #c5c6c7;
+            --title-color: #ffffff;
+            --card-bg: #151a21;
+            --hover-color: #66fcf1;
+            --danger-color: #ff4757;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding-bottom: 60px;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #0f0c1b, #200b26, #4d001d);
+            padding: 80px 20px;
+            text-align: center;
+            position: relative;
+            border-bottom: 3px solid var(--accent-color);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle, transparent 20%, var(--bg-color) 80%);
+            opacity: 0.6;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            background: #2f3542;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            border: 4px solid var(--accent-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--title-color);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            color: var(--title-color);
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+        }
+
+        .hero .handle {
+            font-size: 1.2rem;
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 25px;
+            color: #a4b0be;
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .stat-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 10px 25px;
+            border-radius: 50px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .stat-value {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--title-color);
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: #747d8c;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        section {
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: var(--title-color);
+            margin-bottom: 25px;
+            position: relative;
+            padding-left: 15px;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .about-card, .links-card {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .about-card p {
+            margin-bottom: 15px;
+        }
+
+        .tag-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .tag {
+            background: rgba(197, 160, 89, 0.15);
+            color: var(--accent-color);
+            padding: 5px 12px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .link-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: #222;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            font-weight: bold;
+            border: 1px solid #333;
+        }
+
+        .link-btn.youtube {
+            background: #ff4757;
+            color: white;
+            border: none;
+        }
+
+        .link-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        /* Video Section */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .video-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+        }
+
+        .video-thumbnail {
+            width: 100%;
+            height: 180px;
+            background: linear-gradient(45deg, #1e1e24, #2a2d34);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .video-thumbnail::after {
+            content: '▶';
+            font-size: 2.5rem;
+            color: rgba(255,255,255,0.6);
+            transition: color 0.3s ease;
+        }
+
+        .video-card:hover .video-thumbnail::after {
+            color: var(--accent-color);
+        }
+
+        .badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: var(--danger-color);
+            color: white;
+            padding: 3px 8px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            border-radius: 4px;
+        }
+
+        .video-info {
+            padding: 20px;
+        }
+
+        .video-title {
+            font-size: 1.05rem;
+            color: var(--title-color);
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            height: 2.6rem;
+            line-height: 1.3;
+        }
+
+        .video-meta {
+            font-size: 0.85rem;
+            color: #747d8c;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            background: #060709;
+            color: #4f5b66;
+            font-size: 0.9rem;
+            border-top: 1px solid #151a21;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <div class="hero-content">
+            <div class="profile-img">TB</div>
+            <h1>TB</h1>
+            <div class="handle">@TB8462</div>
+            <p>MAD 무비 및 서브컬처 영상 크리에이터<br>데스노트(바카야로이드) 합성 및 고품질 영상 편집 포트폴리오</p>
+            
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-value">1.61만 명</div>
+                    <div class="stat-label">구독자 수</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">61개+</div>
+                    <div class="stat-label">동영상</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <section id="about">
+            <h2 class="section-title">크리에이터 소개</h2>
+            <div class="about-grid">
+                <div class="about-card">
+                    <p>유튜브 채널 <strong>TB</strong>는 정교한 오디오 및 비주얼 매싱 기술을 기반으로 독창적인 MAD 영화를 제작하는 크리에이터입니다.</p>
+                    <p>주로 데스노트 캐릭터(야가미 라이토, 마츠다 토토 등)를 활용한 <strong>'바카야로이드'</strong> 장르에서 압도적인 퀄리티와 센스를 보여주며 두터운 팬층을 보유하고 있습니다. 대규모 합작 프로젝트의 기획 및 참여작을 비롯해 자작 MAD 영상 등 다양한 스펙트럼의 서브컬처 2차 창작 콘텐츠를 업로드하고 있습니다.</p>
+                    <div class="tag-container">
+                        <span class="tag">#MAD_Movie</span>
+                        <span class="tag">#바카야로이드</span>
+                        <span class="tag">#영상편집</span>
+                        <span class="tag">#합작기획</span>
+                        <span class="tag">#Mine_imator</span>
+                    </div>
+                </div>
+                <div class="links-card">
+                    <h3 style="color: var(--title-color); margin-bottom: 15px; font-size: 1.1rem;">공식 채널 링크</h3>
+                    <a href="https://www.youtube.com/@TB8462" target="_blank" class="link-btn youtube">
+                        YouTube 공식 채널
+                    </a>
+                    <a href="https://nicovideo.jp/user/64948991" target="_blank" class="link-btn">
+                        Niconico 프로필
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="portfolio">
+            <h2 class="section-title">대표 프로젝트 & 인기 동영상</h2>
+            <div class="video-grid">
+                
+                <a href="https://www.youtube.com/watch?v=kYv_3M14fGo" target="_blank" class="video-card">
+                    <div class="video-thumbnail">
+                        <span class="badge">HIT (290만+)</span>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-title">めざせポケモンマツダー -with my friends(9周年記念)-</div>
+                        <div class="video-meta">
+                            <span>조회수 290만회</span>
+                            <span>3년 전</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="https://www.youtube.com/watch?v=P_VbyyR3A8I" target="_blank" class="video-card">
+                    <div class="video-thumbnail">
+                        <span class="badge">HIT (120만+)</span>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-title">夜神ライトに私の名前が見えない</div>
+                        <div class="video-meta">
+                            <span>조회수 120만회</span>
+                            <span>1년 전</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="https://www.youtube.com/watch?v=FstU9-bLzT4" target="_blank" class="video-card">
+                    <div class="video-thumbnail">
+                        <span class="badge">HIT (110만+)</span>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-title">ダンガン何キラ撃てる？op 「お願いマッサツ」</div>
+                        <div class="video-meta">
+                            <span>조회수 110만회</span>
+                            <span>6년 전</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="https://www.youtube.com/watch?v=83xPZzQ6K-o" target="_blank" class="video-card">
+                    <div class="video-thumbnail">
+                        <span class="badge">추천작</span>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-title">粉バナナはスリル、ショック、サスペンス</div>
+                        <div class="video-meta">
+                            <span>조회수 28.7만회</span>
+                            <span>4개월 전</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="https://www.youtube.com/watch?v=B1B-mK5_P4s" target="_blank" class="video-card">
+                    <div class="video-thumbnail">
+                        <span class="badge">참가 합작</span>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-title">【合作】KIRA CANTABILE キラカンタービ레♪【バカやろーいど】</div>
+                        <div class="video-meta">
+                            <span>조회수 23.3만회</span>
+                            <span>2년 전</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="https://www.youtube.com/watch?v=9gWz-D0K-j0" target="_blank" class="video-card">
+                    <div class="video-thumbnail">
+                        <span class="badge">최신 자작</span>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-title">야가미 라이토-비행기(Airplane) | 한국어 가사/Lyrics Video</div>
+                        <div class="video-meta">
+                            <span>조회수 6.4만회</span>
+                            <span>1개월 전</span>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 TB Portfolio Page. Designed for YouTube Channel Introduction.</p>
+    </footer>
+
+</body>
+</html>
