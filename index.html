@@ -64,16 +64,12 @@
         .profile-img {
             width: 120px;
             height: 120px;
-            background: #2f3542;
+            background-color: #2f3542;
+            background-size: cover;
+            background-position: center;
             border-radius: 50%;
             margin: 0 auto 20px;
             border: 4px solid var(--accent-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: var(--title-color);
             box-shadow: 0 10px 25px rgba(0,0,0,0.5);
         }
 
@@ -233,22 +229,39 @@
         .video-thumbnail {
             width: 100%;
             height: 180px;
-            background: linear-gradient(45deg, #1e1e24, #2a2d34);
+            background-color: #1e1e24;
+            background-size: cover;
+            background-position: center;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
         }
 
+        .video-thumbnail::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            transition: background 0.3s ease;
+        }
+
+        .video-card:hover .video-thumbnail::before {
+            background: rgba(0, 0, 0, 0.1);
+        }
+
         .video-thumbnail::after {
             content: '▶';
             font-size: 2.5rem;
-            color: rgba(255,255,255,0.6);
-            transition: color 0.3s ease;
+            color: rgba(255,255,255,0.8);
+            position: relative;
+            z-index: 1;
+            transition: color 0.3s ease, transform 0.3s ease;
         }
 
         .video-card:hover .video-thumbnail::after {
             color: var(--accent-color);
+            transform: scale(1.1);
         }
 
         .badge {
@@ -261,6 +274,7 @@
             font-size: 0.75rem;
             font-weight: bold;
             border-radius: 4px;
+            z-index: 2;
         }
 
         .video-info {
@@ -301,135 +315,21 @@
 <body>
 
     <header class="hero">
-        <div class="hero-content">
-            <div class="profile-img">TB</div>
-            <h1>TB</h1>
-            <div class="handle">@TB8462</div>
-            <p>MAD 무비 및 서브컬처 영상 크리에이터<br>데스노트(바카야로이드) 합성 및 고품질 영상 편집 포트폴리오</p>
-            
-            <div class="stats-container">
-                <div class="stat-item">
-                    <div class="stat-value">1.61만 명</div>
-                    <div class="stat-label">구독자 수</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-value">61개+</div>
-                    <div class="stat-label">동영상</div>
-                </div>
-            </div>
-        </div>
+        <div class="hero-content" id="hero-info"></div>
     </header>
 
     <div class="container">
         <section id="about">
             <h2 class="section-title">크리에이터 소개</h2>
             <div class="about-grid">
-                <div class="about-card">
-                    <p>유튜브 채널 <strong>TB</strong>는 정교한 오디오 및 비주얼 매싱 기술을 기반으로 독창적인 MAD 영화를 제작하는 크리에이터입니다.</p>
-                    <p>주로 데스노트 캐릭터(야가미 라이토, 마츠다 토토 등)를 활용한 <strong>'바카야로이드'</strong> 장르에서 압도적인 퀄리티와 센스를 보여주며 두터운 팬층을 보유하고 있습니다. 대규모 합작 프로젝트의 기획 및 참여작을 비롯해 자작 MAD 영상 등 다양한 스펙트럼의 서브컬처 2차 창작 콘텐츠를 업로드하고 있습니다.</p>
-                    <div class="tag-container">
-                        <span class="tag">#MAD_Movie</span>
-                        <span class="tag">#바카야로이드</span>
-                        <span class="tag">#영상편집</span>
-                        <span class="tag">#합작기획</span>
-                        <span class="tag">#Mine_imator</span>
-                    </div>
-                </div>
-                <div class="links-card">
-                    <h3 style="color: var(--title-color); margin-bottom: 15px; font-size: 1.1rem;">공식 채널 링크</h3>
-                    <a href="https://www.youtube.com/@TB8462" target="_blank" class="link-btn youtube">
-                        YouTube 공식 채널
-                    </a>
-                    <a href="https://nicovideo.jp/user/64948991" target="_blank" class="link-btn">
-                        Niconico 프로필
-                    </a>
-                </div>
+                <div class="about-card" id="about-text"></div>
+                <div class="links-card" id="channel-links"></div>
             </div>
         </section>
 
         <section id="portfolio">
             <h2 class="section-title">대표 프로젝트 & 인기 동영상</h2>
-            <div class="video-grid">
-                
-                <a href="https://www.youtube.com/watch?v=kYv_3M14fGo" target="_blank" class="video-card">
-                    <div class="video-thumbnail">
-                        <span class="badge">HIT (290만+)</span>
-                    </div>
-                    <div class="video-info">
-                        <div class="video-title">めざせポケモンマツダー -with my friends(9周年記念)-</div>
-                        <div class="video-meta">
-                            <span>조회수 290만회</span>
-                            <span>3년 전</span>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="https://www.youtube.com/watch?v=P_VbyyR3A8I" target="_blank" class="video-card">
-                    <div class="video-thumbnail">
-                        <span class="badge">HIT (120만+)</span>
-                    </div>
-                    <div class="video-info">
-                        <div class="video-title">夜神ライトに私の名前が見えない</div>
-                        <div class="video-meta">
-                            <span>조회수 120만회</span>
-                            <span>1년 전</span>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="https://www.youtube.com/watch?v=FstU9-bLzT4" target="_blank" class="video-card">
-                    <div class="video-thumbnail">
-                        <span class="badge">HIT (110만+)</span>
-                    </div>
-                    <div class="video-info">
-                        <div class="video-title">ダンガン何キラ撃てる？op 「お願いマッサツ」</div>
-                        <div class="video-meta">
-                            <span>조회수 110만회</span>
-                            <span>6년 전</span>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="https://www.youtube.com/watch?v=83xPZzQ6K-o" target="_blank" class="video-card">
-                    <div class="video-thumbnail">
-                        <span class="badge">추천작</span>
-                    </div>
-                    <div class="video-info">
-                        <div class="video-title">粉バナナはスリル、ショック、サスペンス</div>
-                        <div class="video-meta">
-                            <span>조회수 28.7만회</span>
-                            <span>4개월 전</span>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="https://www.youtube.com/watch?v=B1B-mK5_P4s" target="_blank" class="video-card">
-                    <div class="video-thumbnail">
-                        <span class="badge">참가 합작</span>
-                    </div>
-                    <div class="video-info">
-                        <div class="video-title">【合作】KIRA CANTABILE キラカンタービ레♪【バカやろーいど】</div>
-                        <div class="video-meta">
-                            <span>조회수 23.3만회</span>
-                            <span>2년 전</span>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="https://www.youtube.com/watch?v=9gWz-D0K-j0" target="_blank" class="video-card">
-                    <div class="video-thumbnail">
-                        <span class="badge">최신 자작</span>
-                    </div>
-                    <div class="video-info">
-                        <div class="video-title">야가미 라이토-비행기(Airplane) | 한국어 가사/Lyrics Video</div>
-                        <div class="video-meta">
-                            <span>조회수 6.4만회</span>
-                            <span>1개월 전</span>
-                        </div>
-                    </div>
-                </a>
-
-            </div>
+            <div class="video-grid" id="video-list"></div>
         </section>
     </div>
 
@@ -437,5 +337,132 @@
         <p>&copy; 2026 TB Portfolio Page. Designed for YouTube Channel Introduction.</p>
     </footer>
 
+    <script>
+        const PORTFOLIO_DATA = {
+            // 1. 프로필 및 상단 정보 수정
+            profile: {
+                name: "TB",
+                handle: "@TB8462",
+                profileImg: "profile.jpg", // 직접 주소를 추출하셨다면 이미지 대입 가능 (예: 'https://주소')
+                description: "MAD 무비 및 서브컬처 영상 크리에이터<br>데스노트(바카야로이드) 합성 및 고품질 영상 편집 포트폴리오",
+                subscribers: "1.61만 명",
+                videoCount: "61개+"
+            },
+            // 2. 크리에이터 상세 소개 텍스트 및 태그 수정
+            about: {
+                paragraphs: [
+                    "유튜브 채널 <strong>TB</strong>는 정교한 오디오 및 비주얼 매싱 기술을 기반으로 독창적인 MAD 영화를 제작하는 크리에이터입니다.",
+                    "주로 데스노트 캐릭터(야가미 라이토, 마츠다 토토 등)를 활용한 <strong>'바카야로이드'</strong> 장르에서 압도적인 퀄리티와 센스를 보여주며 두터운 팬층을 보유하고 있습니다. 대규모 합작 프로젝트의 기획 및 참여작을 비롯해 자작 MAD 영상 등 다양한 스펙트럼의 서브컬처 2차 창작 콘텐츠를 업로드하고 있습니다."
+                ],
+                tags: ["#MAD_Movie", "#바카야로이드", "#영상편집", "#합작기획", "#Mine_imator"]
+            },
+            // 3. 외부 링크 버튼 수정
+            links: [
+                { title: "YouTube 공식 채널", url: "https://www.youtube.com/@TB8462", isYoutube: true },
+                { title: "Niconico 프로필", url: "https://nicovideo.jp/user/64948991", isYoutube: false }
+            ],
+            // 4. 동영상 포트폴리오 목록 수정 (수정/삭제/추가 가능)
+            videos: [
+                {
+                    id: "kYv_3M14fGo",
+                    title: "めざせポケモンマツダー -with my friends(9周年記念)-",
+                    badge: "HIT (290만+)",
+                    views: "290만회",
+                    date: "3년 전"
+                },
+                {
+                    id: "P_VbyyR3A8I",
+                    title: "夜神ライトに私の名前が見えない",
+                    badge: "HIT (120만+)",
+                    views: "120만회",
+                    date: "1년 전"
+                },
+                {
+                    id: "FstU9-bLzT4",
+                    title: "ダンガン何キラ撃てる？op 「お願いマッサツ」",
+                    badge: "HIT (110만+)",
+                    views: "110만회",
+                    date: "6년 전"
+                },
+                {
+                    id: "83xPZzQ6K-o",
+                    title: "粉バナナはスリル、ショック、サスペンス",
+                    badge: "추천작",
+                    views: "28.7만회",
+                    date: "4개월 전"
+                },
+                {
+                    id: "B1B-mK5_P4s",
+                    title: "【合作】KIRA CANTABILE キラカンタービ레♪【バカやろーいど】",
+                    badge: "참가 합작",
+                    views: "23.3만회",
+                    date: "2년 전"
+                },
+                {
+                    id: "9gWz-D0K-j0",
+                    title: "야가미 라이토-비행기(Airplane) | 한국어 가사/Lyrics Video",
+                    badge: "최신 자작",
+                    views: "6.4만회",
+                    date: "1개월 전"
+                }
+            ]
+        };
+
+        // 데이터를 기반으로 화면을 그리는 렌더링 스크립트
+        document.addEventListener("DOMContentLoaded", () => {
+            // 상단 프로필 렌더링
+            const p = PORTFOLIO_DATA.profile;
+            document.getElementById("hero-info").innerHTML = `
+                <div class="profile-img" style="background-image: url('${p.profileImg}');" title="${p.name}"></div>
+                <h1>${p.name}</h1>
+                <div class="handle">${p.handle}</div>
+                <p>${p.description}</p>
+                <div class="stats-container">
+                    <div class="stat-item">
+                        <div class="stat-value">${p.subscribers}</div>
+                        <div class="stat-label">구독자 수</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">${p.videoCount}</div>
+                        <div class="stat-label">동영상</div>
+                    </div>
+                </div>
+            `;
+
+            // 소개글 및 태그 렌더링
+            const a = PORTFOLIO_DATA.about;
+            const paragraphsHtml = a.paragraphs.map(txt => `<p>${txt}</p>`).join("");
+            const tagsHtml = `<div class="tag-container">${a.tags.map(t => `<span class="tag">${t}</span>`).join("")}</div>`;
+            document.getElementById("about-text").innerHTML = paragraphsHtml + tagsHtml;
+
+            // 링크 버튼 렌더링
+            const linksHtml = `
+                <h3 style="color: var(--title-color); margin-bottom: 15px; font-size: 1.1rem;">공식 채널 링크</h3>
+                ${PORTFOLIO_DATA.links.map(l => `
+                    <a href="${l.url}" target="_blank" class="link-btn ${l.isYoutube ? 'youtube' : ''}">
+                        ${l.title}
+                    </a>
+                `).join("")}
+            `;
+            document.getElementById("channel-links").innerHTML = linksHtml;
+
+            // 비디오 리스트 렌더링 (유튜브 공식 썸네일 URL을 자동으로 변환 매핑)
+            const videoListContainer = document.getElementById("video-list");
+            videoListContainer.innerHTML = PORTFOLIO_DATA.videos.map(v => `
+                <a href="https://www.youtube.com/watch?v=${v.id}" target="_blank" class="video-card">
+                    <div class="video-thumbnail" style="background-image: url('https://img.youtube.com/vi/${v.id}/hqdefault.jpg');">
+                        <span class="badge">${v.badge}</span>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-title">${v.title}</div>
+                        <div class="video-meta">
+                            <span>조회수 ${v.views}</span>
+                            <span>${v.date}</span>
+                        </div>
+                    </div>
+                </a>
+            `).join("");
+        });
+    </script>
 </body>
 </html>
